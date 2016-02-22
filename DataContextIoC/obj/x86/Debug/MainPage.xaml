@@ -1,0 +1,40 @@
+﻿<Page x:ConnectionId='1'
+    x:Class="DataContextIoC.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DataContextIoC"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <SplitView OpenPaneLength="200">
+        <SplitView.Pane>
+            <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <ListView x:ConnectionId='2' Name="PersonsList" Grid.Row="0"                                                                                         >
+                    <ListView.ItemTemplate>
+                        <DataTemplate                                   >
+                            <StackPanel x:ConnectionId='4' Orientation="Horizontal">
+                                <TextBlock x:ConnectionId='5'                            />
+                                <Button x:ConnectionId='6' Content="Delete"                           />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <TextBox x:ConnectionId='3' Name="NewPersonName" Grid.Row="1" Text="Pietje"                            />
+            </Grid>
+        </SplitView.Pane>
+        <SplitView.Content>
+            <local:PersonFormView x:ConnectionId='7' x:Name="PersonForm"/>
+        </SplitView.Content>
+    </SplitView>
+
+    
+</Page>
+
