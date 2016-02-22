@@ -24,13 +24,13 @@ namespace DataContextIoC
 
     public class Navigator : INavigator
     {
-        struct NavigationValue<T> where T : struct
+        class NavigationValue<T> where T : struct
         {
-            public Subject<Data<T>> Subject;
+            public Subject<Data<T>> Subject=new Subject<Data<T>>();
             public T? CurrentValue;
         }
 
-        NavigationValue<int> _personId = new NavigationValue<int>();
+        private NavigationValue<int> _personId = new NavigationValue<int>();
 
         public IObservable<Data<int>> PersonId => _personId.Subject;
 

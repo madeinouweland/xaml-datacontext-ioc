@@ -11,7 +11,7 @@
     <AssemblyName>DataContextIoC</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
+    <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -99,17 +99,21 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Bootstrap.cs" />
+    <Compile Include="DataContextConverter.cs" />
     <Compile Include="IdGenerator.cs" />
+    <Compile Include="IMainViewModel.cs" />
     <Compile Include="INavigator.cs" />
+    <Compile Include="IPersonViewModel.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PersonFormInteractor.cs" />
-    <Compile Include="PersonFormView.xaml.cs">
-      <DependentUpon>PersonFormView.xaml</DependentUpon>
+    <Compile Include="ObservableObject.cs" />
+    <Compile Include="PersonView.xaml.cs">
+      <DependentUpon>PersonView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Person.cs" />
-    <Compile Include="PersonInteractor.cs" />
+    <Compile Include="MainViewModel.cs" />
+    <Compile Include="PersonRepository.cs" />
     <Compile Include="PersonViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -138,7 +142,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="PersonFormView.xaml">
+    <Page Include="PersonView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

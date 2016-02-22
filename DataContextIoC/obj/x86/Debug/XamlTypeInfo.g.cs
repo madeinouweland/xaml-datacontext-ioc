@@ -132,19 +132,23 @@ namespace DataContextIoC.DataContextIoC_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[5];
-            _typeNameTable[0] = "DataContextIoC.PersonFormView";
-            _typeNameTable[1] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[2] = "DataContextIoC.PersonFormView.IViewModel";
-            _typeNameTable[3] = "DataContextIoC.MainPage";
-            _typeNameTable[4] = "Windows.UI.Xaml.Controls.Page";
+            _typeNameTable = new string[7];
+            _typeNameTable[0] = "DataContextIoC.DataContextConverter";
+            _typeNameTable[1] = "Object";
+            _typeNameTable[2] = "DataContextIoC.PersonView";
+            _typeNameTable[3] = "Windows.UI.Xaml.Controls.UserControl";
+            _typeNameTable[4] = "DataContextIoC.IPersonViewModel";
+            _typeNameTable[5] = "DataContextIoC.MainPage";
+            _typeNameTable[6] = "Windows.UI.Xaml.Controls.Page";
 
-            _typeTable = new global::System.Type[5];
-            _typeTable[0] = typeof(global::DataContextIoC.PersonFormView);
-            _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[2] = typeof(global::DataContextIoC.PersonFormView.IViewModel);
-            _typeTable[3] = typeof(global::DataContextIoC.MainPage);
-            _typeTable[4] = typeof(global::Windows.UI.Xaml.Controls.Page);
+            _typeTable = new global::System.Type[7];
+            _typeTable[0] = typeof(global::DataContextIoC.DataContextConverter);
+            _typeTable[1] = typeof(global::System.Object);
+            _typeTable[2] = typeof(global::DataContextIoC.PersonView);
+            _typeTable[3] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
+            _typeTable[4] = typeof(global::DataContextIoC.IPersonViewModel);
+            _typeTable[5] = typeof(global::DataContextIoC.MainPage);
+            _typeTable[6] = typeof(global::Windows.UI.Xaml.Controls.Page);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -179,8 +183,9 @@ namespace DataContextIoC.DataContextIoC_XamlTypeInfo
             return -1;
         }
 
-        private object Activate_0_PersonFormView() { return new global::DataContextIoC.PersonFormView(); }
-        private object Activate_3_MainPage() { return new global::DataContextIoC.MainPage(); }
+        private object Activate_0_DataContextConverter() { return new global::DataContextIoC.DataContextConverter(); }
+        private object Activate_2_PersonView() { return new global::DataContextIoC.PersonView(); }
+        private object Activate_5_MainPage() { return new global::DataContextIoC.MainPage(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -192,33 +197,44 @@ namespace DataContextIoC.DataContextIoC_XamlTypeInfo
             switch (typeIndex)
             {
 
-            case 0:   //  DataContextIoC.PersonFormView
+            case 0:   //  DataContextIoC.DataContextConverter
+                userType = new global::DataContextIoC.DataContextIoC_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_0_DataContextConverter;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 1:   //  Object
+                xamlType = new global::DataContextIoC.DataContextIoC_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 2:   //  DataContextIoC.PersonView
                 userType = new global::DataContextIoC.DataContextIoC_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_0_PersonFormView;
+                userType.Activator = Activate_2_PersonView;
                 userType.AddMemberName("ViewModel");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 1:   //  Windows.UI.Xaml.Controls.UserControl
+            case 3:   //  Windows.UI.Xaml.Controls.UserControl
                 xamlType = new global::DataContextIoC.DataContextIoC_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 2:   //  DataContextIoC.PersonFormView.IViewModel
+            case 4:   //  DataContextIoC.IPersonViewModel
                 userType = new global::DataContextIoC.DataContextIoC_XamlTypeInfo.XamlUserType(this, typeName, type, null);
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 3:   //  DataContextIoC.MainPage
+            case 5:   //  DataContextIoC.MainPage
                 userType = new global::DataContextIoC.DataContextIoC_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_3_MainPage;
+                userType.Activator = Activate_5_MainPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 4:   //  Windows.UI.Xaml.Controls.Page
+            case 6:   //  Windows.UI.Xaml.Controls.Page
                 xamlType = new global::DataContextIoC.DataContextIoC_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
             }
@@ -226,9 +242,9 @@ namespace DataContextIoC.DataContextIoC_XamlTypeInfo
         }
 
 
-        private object get_0_PersonFormView_ViewModel(object instance)
+        private object get_0_PersonView_ViewModel(object instance)
         {
-            var that = (global::DataContextIoC.PersonFormView)instance;
+            var that = (global::DataContextIoC.PersonView)instance;
             return that.ViewModel;
         }
 
@@ -239,10 +255,10 @@ namespace DataContextIoC.DataContextIoC_XamlTypeInfo
 
             switch (longMemberName)
             {
-            case "DataContextIoC.PersonFormView.ViewModel":
-                userType = (global::DataContextIoC.DataContextIoC_XamlTypeInfo.XamlUserType)GetXamlTypeByName("DataContextIoC.PersonFormView");
-                xamlMember = new global::DataContextIoC.DataContextIoC_XamlTypeInfo.XamlMember(this, "ViewModel", "DataContextIoC.PersonFormView.IViewModel");
-                xamlMember.Getter = get_0_PersonFormView_ViewModel;
+            case "DataContextIoC.PersonView.ViewModel":
+                userType = (global::DataContextIoC.DataContextIoC_XamlTypeInfo.XamlUserType)GetXamlTypeByName("DataContextIoC.PersonView");
+                xamlMember = new global::DataContextIoC.DataContextIoC_XamlTypeInfo.XamlMember(this, "ViewModel", "DataContextIoC.IPersonViewModel");
+                xamlMember.Getter = get_0_PersonView_ViewModel;
                 xamlMember.SetIsReadOnly();
                 break;
             }

@@ -4,41 +4,26 @@ using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace DataContextIoC
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainPage
     {
-        public interface IViewModel
-        {
-            ObservableCollection<PersonViewModel> Persons { get; }
-            IObservable<PersonFormView.IViewModel> PersonFormViewModel { get; }
-            void AddPerson(string name);
-            void RemovePerson(int id);
-            void SelectPerson(int id);
-        }
-
+       
         public MainPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
             DataContextChanged += OnViewModelUpdate;
         }
 
         private void OnViewModelUpdate(FrameworkElement sender, DataContextChangedEventArgs args)
         {
             Bindings.Update();
-            ViewModel.PersonFormViewModel.Subscribe(viewModel => PersonForm.DataContext = viewModel);
         }
 
-        private IViewModel ViewModel { get { return DataContext as IViewModel; } }
+        private IMainViewModel ViewModel => DataContext as IMainViewModel;
 
-        private void RemovePerson_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void RemovePerson_Click(object sender, RoutedEventArgs e)
         {
             var pp = (sender as Button).DataContext as PersonViewModel;
             ViewModel.RemovePerson(pp.Id);
@@ -55,7 +40,8 @@ namespace DataContextIoC
 
         private void PersonsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selectedViewModel = ((sender as ListView).SelectedItem as FrameworkElement).DataContext as PersonViewModel;
+
+            var selectedViewModel =e.AddedItems[0] as PersonViewModel;
             if(selectedViewModel != null)
             {
                 ViewModel.SelectPerson(selectedViewModel.Id);

@@ -7,34 +7,30 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <SplitView OpenPaneLength="200">
-        <SplitView.Pane>
-            <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-                <ListView x:ConnectionId='2' Name="PersonsList" Grid.Row="0"                                                                                         >
-                    <ListView.ItemTemplate>
-                        <DataTemplate                                   >
-                            <StackPanel x:ConnectionId='4' Orientation="Horizontal">
-                                <TextBlock x:ConnectionId='5'                            />
-                                <Button x:ConnectionId='6' Content="Delete"                           />
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+        <ListView x:ConnectionId='2' Name="PersonsList" Grid.Row="0"                                                                                         >
+            <ListView.ItemTemplate>
+                <DataTemplate                                   >
+                    <StackPanel x:ConnectionId='5' Orientation="Horizontal">
+                        <TextBlock x:ConnectionId='6'                            />
+                        <Button x:ConnectionId='7' Content="Delete"                           />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
-                <TextBox x:ConnectionId='3' Name="NewPersonName" Grid.Row="1" Text="Pietje"                            />
-            </Grid>
-        </SplitView.Pane>
-        <SplitView.Content>
-            <local:PersonFormView x:ConnectionId='7' x:Name="PersonForm"/>
-        </SplitView.Content>
-    </SplitView>
-
-    
+        <TextBox x:ConnectionId='3' Name="NewPersonName" Grid.Row="1" Text="Pietje"                            />
+        <local:PersonView x:ConnectionId='4' Grid.Column="1" Grid.RowSpan="2"                                                                                                                        />
+    </Grid>
 </Page>
 

@@ -7,33 +7,29 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <SplitView OpenPaneLength="200">
-        <SplitView.Pane>
-            <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-                <ListView Name="PersonsList" Grid.Row="0" ItemsSource="{x:Bind ViewModel.Persons}" SelectionChanged="PersonsList_SelectionChanged">
-                    <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="local:PersonViewModel">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{x:Bind Description}"/>
-                                <Button Content="Delete" Click="RemovePerson_Click"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+        <ListView Name="PersonsList" Grid.Row="0" ItemsSource="{x:Bind ViewModel.Persons}" SelectionChanged="PersonsList_SelectionChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:PersonViewModel">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{x:Bind Description}"/>
+                        <Button Content="Delete" Click="RemovePerson_Click"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
-                <TextBox Name="NewPersonName" Grid.Row="1" Text="Pietje" KeyUp="NewPersonName_KeyUp"/>
-            </Grid>
-        </SplitView.Pane>
-        <SplitView.Content>
-            <local:PersonFormView x:Name="PersonForm"/>
-        </SplitView.Content>
-    </SplitView>
-
-    
+        <TextBox Name="NewPersonName" Grid.Row="1" Text="Pietje" KeyUp="NewPersonName_KeyUp"/>
+        <local:PersonView Grid.Column="1" Grid.RowSpan="2" DataContext="{x:Bind ViewModel.SelectedPersonViewModel, Mode=OneWay, Converter={StaticResource DataContextConverter}}" />
+    </Grid>
 </Page>

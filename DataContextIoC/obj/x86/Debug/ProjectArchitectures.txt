@@ -1,1 +1,1 @@
-c:\users\brwindel\documents\visual studio 2015\Projects\DataContextIoC\DataContextIoC\DataContextIoC.csproj;x86
+c:\Projects\xaml-datacontext-ioc-master\DataContextIoC\DataContextIoC.csproj;x86
